@@ -4,7 +4,7 @@ use std::fs::File;
 use std::io::Read;
 use std::path::Path;
 use std::error::Error;
-use serde_json;
+use de::deserialise;
 use story::StoryNode;
 
 
@@ -30,7 +30,7 @@ pub fn load_story(filepath: &str) -> Result<Vec<StoryNode>, String> {
     };
 
     // Deserialize story
-    let story: Vec<StoryNode> = match serde_json::from_str(content.as_str()) {
+    let story: Vec<StoryNode> = match deserialise(content.as_str()) {
         Ok(nodes) => nodes,
         Err(err) => return Err(format!("Could not deserialise {}: {}", display, err.description())),
     };
