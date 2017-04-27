@@ -6,3 +6,5 @@ use serde::de::{Deserialize};
 pub struct StoryNode {
     pub title: String,
 }
+
+pub struct StoryRunner {}
