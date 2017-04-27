@@ -1,0 +1,9 @@
+[package]
+name = "storylet"
+version = "0.1.0"
+authors = ["Willem Victor <wimpievictor@gmail.com>"]
+
+[dependencies]
+serde = "1.0.1"
+serde_derive = "1.0.1"
+serde_json = "1.0.0"
