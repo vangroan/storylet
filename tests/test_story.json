@@ -1,6 +1,7 @@
 [
     {
         "id": "test_story_intro",
-        "content": "Test story"
+        "content": "Test story",
+        "answers": []
     }
 ]
