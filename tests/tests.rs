@@ -11,5 +11,5 @@ fn test_basic_deserialise() {
     };
 
     assert_eq!(story.len(), 1);
-    assert_eq!(story[0].title, "Test story");
+    assert_eq!(story[0].content, "Test story");
 }

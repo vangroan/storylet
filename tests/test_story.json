@@ -1,5 +1,6 @@
 [
     {
-        "title": "Test story"
+        "id": "test_story_intro",
+        "content": "Test story"
     }
 ]

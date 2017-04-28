@@ -1,10 +1,11 @@
 
-use serde::de::{Deserialize};
+use serde::de::Deserialize;
 
 
 #[derive(Deserialize, Debug)]
 pub struct StoryNode {
-    pub title: String,
+    pub id: String,
+    pub content: String,
 }
 
 pub struct StoryRunner {}
