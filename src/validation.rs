@@ -12,8 +12,8 @@ pub fn validate_story(story_tree: &Vec<StoryNode>) -> Result<(), String> {
         }
     }
 
-    for node in story_tree.iter().by_ref() {
-        for answer in node.answers.iter().by_ref() {
+    for node in story_tree.iter() {
+        for answer in node.answers.iter() {
             match answer.next {
                 Some(ref s) => {
                     if !seen_nodes.contains(s) {
