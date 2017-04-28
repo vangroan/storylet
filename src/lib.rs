@@ -7,3 +7,4 @@ extern crate serde_json;
 pub mod story;
 pub mod de;
 pub mod load;
+pub mod validation;

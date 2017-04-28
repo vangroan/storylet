@@ -6,11 +6,7 @@
             {
                 "id": "test_story_intro_01",
                 "content": "Test Answer",
-                "next": "test_story_intro"
-            },
-            {
-               "id": "test_story_intro_02",
-                "content": "Test Answer"
+                "next": "test_story_intro_INCORRECT"
             }
         ]
     }
