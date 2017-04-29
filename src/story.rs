@@ -53,6 +53,8 @@ impl StoryRunner {
             self.current_idx = Some(0);
         }
 
+        self.node_index.clear();
+
         // Build index
         for (idx, node) in self.story.iter().enumerate() {
             self.node_index.insert(node.id.to_owned(), idx);
