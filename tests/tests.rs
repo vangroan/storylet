@@ -32,5 +32,6 @@ fn test_story_runner_get_current() {
     let story = load_story("tests/test_story.json").unwrap();
     let runner = StoryRunner::new(story);
 
+    assert_eq!(runner.has_current(), true);
     assert_eq!(runner.borrow_current().unwrap().id, "test_story_intro");
 }
