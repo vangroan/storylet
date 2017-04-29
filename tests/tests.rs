@@ -2,6 +2,7 @@
 extern crate storylet;
 
 use storylet::load::load_story;
+use storylet::story::StoryRunner;
 
 #[test]
 fn test_basic_deserialise() {
@@ -22,6 +23,14 @@ fn test_validation_error() {
     };
 
     let result = storylet::validation::validate_story(&story);
-    
+
     assert!(result.is_err());
+}
+
+#[test]
+fn test_story_runner_get_current() {
+    let story = load_story("tests/test_story.json").unwrap();
+    let runner = StoryRunner::new(story);
+
+    assert_eq!(runner.borrow_current().unwrap().id, "test_story_intro");
 }
