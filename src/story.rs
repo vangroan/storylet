@@ -25,7 +25,7 @@ pub struct StoryRunner {
     /// is active.
     current_idx: Option<usize>,
 
-    /// The story the StoryRunner is working with. The loaded story must not be 
+    /// The story the StoryRunner is working with. The loaded story must not be
     /// changed while the StoryRunner owns it.
     story: Vec<StoryNode>,
 
@@ -68,19 +68,19 @@ impl StoryRunner {
     pub fn borrow_current(&self) -> Option<&StoryNode> {
         match self.current_idx {
             Some(idx) => Some(&self.story[idx]),
-            None => None
+            None => None,
         }
     }
 
     /// Advances the story by the index of the answer in the node.
     pub fn next_by_answer_idx(&mut self, answer_idx: usize) -> Result<(), String> {
         if self.current_idx.is_none() {
-            return Err("Runner has no current node".to_owned())
+            return Err("Runner has no current node".to_owned());
         }
 
         let answers = &self.story[self.current_idx.unwrap()].answers;
         if answer_idx >= answers.len() {
-            return Err("Answer index argument is out of bounds".to_owned())
+            return Err("Answer index argument is out of bounds".to_owned());
         }
 
         match answers[answer_idx].next {
