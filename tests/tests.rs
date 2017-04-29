@@ -11,7 +11,7 @@ fn test_basic_deserialise() {
         Err(reason) => panic!(reason),
     };
 
-    assert_eq!(story.len(), 1);
+    assert_eq!(story.len(), 2);
     assert_eq!(story[0].content, "Test story");
 }
 
@@ -34,4 +34,13 @@ fn test_story_runner_get_current() {
 
     assert_eq!(runner.has_current(), true);
     assert_eq!(runner.borrow_current().unwrap().id, "test_story_intro");
+}
+
+#[test]
+fn test_story_runner_advance_to_nex() {
+    let story = load_story("tests/test_story.json").unwrap();
+    let mut runner = StoryRunner::new(story);
+    runner.next_by_answer_idx(0);
+
+    assert_eq!(runner.borrow_current().unwrap().id, "test_story_prologue");
 }

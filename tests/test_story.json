@@ -6,12 +6,17 @@
             {
                 "id": "test_story_intro_01",
                 "content": "Test Answer",
-                "next": "test_story_intro"
+                "next": "test_story_prologue"
             },
             {
                "id": "test_story_intro_02",
                 "content": "Test Answer"
             }
         ]
+    },
+    {
+        "id": "test_story_prologue",
+        "content": "Our adventure begings...",
+        "answers": []
     }
 ]
