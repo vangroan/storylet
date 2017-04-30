@@ -2,7 +2,7 @@
 extern crate storylet;
 
 use storylet::load::load_story;
-use storylet::story::StoryRunner;
+use storylet::runner::StoryRunner;
 
 #[test]
 fn test_basic_deserialise() {
@@ -40,7 +40,7 @@ fn test_story_runner_get_current() {
 fn test_story_runner_advance_to_nex() {
     let story = load_story("tests/test_story.json").unwrap();
     let mut runner = StoryRunner::new(story);
-    runner.next_by_answer_idx(0);
+    runner.next_by_answer_idx(0).unwrap();
 
     assert_eq!(runner.borrow_current().unwrap().id, "test_story_prologue");
 }
