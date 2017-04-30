@@ -5,7 +5,7 @@ use std::io::Read;
 use std::path::Path;
 use std::error::Error;
 use de::deserialise;
-use story::StoryNode;
+use node::StoryNode;
 use feed::StoryFeed;
 
 

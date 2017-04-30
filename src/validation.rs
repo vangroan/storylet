@@ -2,7 +2,7 @@
 
 use std::collections::HashSet;
 use feed::StoryFeed;
-use story::StoryNode;
+use node::StoryNode;
 
 pub fn validate_story(feed: &StoryFeed) -> Result<(), String> {
     let mut seen_nodes: HashSet<String> = HashSet::new();

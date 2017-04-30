@@ -2,7 +2,7 @@
 
 use std::collections::HashMap;
 use feed::StoryFeed;
-use story::StoryNode;
+use node::StoryNode;
 
 
 /// Holds the state of the story

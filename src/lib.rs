@@ -4,7 +4,7 @@ extern crate serde_derive;
 extern crate serde;
 extern crate serde_json;
 
-pub mod story;
+pub mod node;
 pub mod feed;
 pub mod runner;
 pub mod de;

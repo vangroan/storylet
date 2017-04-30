@@ -3,7 +3,7 @@
 use std::collections::HashMap;
 use std::slice::Iter;
 use std::ops::Index;
-use story::StoryNode;
+use node::StoryNode;
 
 
 pub struct StoryFeed {
