@@ -1,6 +1,7 @@
 
 
 use std::collections::HashMap;
+use feed::StoryFeed;
 use story::StoryNode;
 
 
@@ -12,19 +13,15 @@ pub struct StoryRunner {
 
     /// The story the StoryRunner is working with. The loaded story must not be
     /// changed while the StoryRunner owns it.
-    story: Vec<StoryNode>,
-
-    /// Maps Node ids to vector indeces for quicker lookup.
-    node_index: HashMap<String, usize>,
+    feed: StoryFeed,
 }
 
 
 impl StoryRunner {
-    pub fn new(story: Vec<StoryNode>) -> Self {
+    pub fn new(feed: StoryFeed) -> Self {
         let mut runner = StoryRunner {
             current_idx: None,
-            story: story,
-            node_index: HashMap::new(),
+            feed: feed,
         };
 
         runner.init();
@@ -34,15 +31,8 @@ impl StoryRunner {
 
     fn init(&mut self) {
         // Set the first node as current
-        if !self.story.is_empty() {
+        if !self.feed.is_empty() {
             self.current_idx = Some(0);
-        }
-
-        self.node_index.clear();
-
-        // Build index
-        for (idx, node) in self.story.iter().enumerate() {
-            self.node_index.insert(node.id.to_owned(), idx);
         }
     }
 
@@ -52,7 +42,7 @@ impl StoryRunner {
 
     pub fn borrow_current(&self) -> Option<&StoryNode> {
         match self.current_idx {
-            Some(idx) => Some(&self.story[idx]),
+            Some(idx) => Some(&self.feed[idx]),
             None => None,
         }
     }
@@ -63,20 +53,16 @@ impl StoryRunner {
             return Err("Runner has no current node".to_owned());
         }
 
-        let answers = &self.story[self.current_idx.unwrap()].answers;
+        let answers = &self.feed[self.current_idx.unwrap()].answers;
         if answer_idx >= answers.len() {
             return Err("Answer index argument is out of bounds".to_owned());
         }
 
         match answers[answer_idx].next {
-            Some(ref node_id) => self.current_idx = Some(self.id_to_index(node_id)),
+            Some(ref node_id) => self.current_idx = Some(self.feed.id_to_index(node_id)),
             None => self.current_idx = None,
         }
 
         Ok(())
-    }
-
-    fn id_to_index(&self, id: &str) -> usize {
-        self.node_index.get(id).unwrap().clone()
     }
 }

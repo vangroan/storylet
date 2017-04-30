@@ -1,18 +1,19 @@
 
 
 use std::collections::HashSet;
+use feed::StoryFeed;
 use story::StoryNode;
 
-pub fn validate_story(story_tree: &Vec<StoryNode>) -> Result<(), String> {
+pub fn validate_story(feed: &StoryFeed) -> Result<(), String> {
     let mut seen_nodes: HashSet<String> = HashSet::new();
 
-    for node in story_tree {
+    for node in feed.iter() {
         if !seen_nodes.contains(&node.id) {
             seen_nodes.insert(node.id.clone());
         }
     }
 
-    for node in story_tree.iter() {
+    for node in feed.iter() {
         for answer in node.answers.iter() {
             match answer.next {
                 Some(ref s) => {

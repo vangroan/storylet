@@ -5,6 +5,7 @@ extern crate serde;
 extern crate serde_json;
 
 pub mod story;
+pub mod feed;
 pub mod runner;
 pub mod de;
 pub mod load;

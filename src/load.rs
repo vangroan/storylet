@@ -6,9 +6,10 @@ use std::path::Path;
 use std::error::Error;
 use de::deserialise;
 use story::StoryNode;
+use feed::StoryFeed;
 
 
-pub fn load_story(filepath: &str) -> Result<Vec<StoryNode>, String> {
+pub fn load_story(filepath: &str) -> Result<StoryFeed, String> {
     let path = Path::new(filepath);
     let display = path.display();
 
@@ -30,10 +31,10 @@ pub fn load_story(filepath: &str) -> Result<Vec<StoryNode>, String> {
     };
 
     // Deserialize story
-    let story: Vec<StoryNode> = match deserialise(content.as_str()) {
+    let nodes: Vec<StoryNode> = match deserialise(content.as_str()) {
         Ok(nodes) => nodes,
         Err(err) => return Err(format!("Could not deserialise {}: {}", display, err.description())),
     };
 
-    Ok(story)
+    Ok(StoryFeed::new(nodes))
 }
